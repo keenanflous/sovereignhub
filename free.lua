@@ -1,9 +1,6 @@
 local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 
--- Initialize WindUI
-WindUI:Init()
-
--- Buat Window
+-- Langsung buat Window dengan opsi tema jika didukung:
 local Window = WindUI.new({
     Title = "SovereignHub | The Forge",
     Icon = "hammer",
@@ -11,8 +8,11 @@ local Window = WindUI.new({
     Debug = false,
 })
 
--- Set theme dark
-WindUI:SetTheme("Dark")
+if Window and Window.SetTheme then
+    Window:SetTheme("Dark")
+elseif WindUI and WindUI.SetTheme then
+    WindUI:SetTheme("Dark")
+end
 
 -- Tab Main
 local MainTab = Window:Tab({
